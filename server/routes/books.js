@@ -1,3 +1,10 @@
+//
+//Ian Lee 
+//Student No: 301188548
+//Book Javascript Page
+//October 27th 2021
+//
+
 // modules required for routing
 let express = require('express');
 let router = express.Router();
@@ -26,7 +33,7 @@ router.get('/', (req, res, next) =>
   })
 });
 
-//  GET the Book Details page in order to add a new Book
+//  GET the Book Details page in order to add a new Book ///////////////////////////
 router.get('/add', (req, res, next) => 
 {
   let showBook = book
@@ -46,7 +53,7 @@ router.get('/add', (req, res, next) =>
 });
 
 
-// POST process the Book Details page and create a new Book - CREATE
+// POST process the Book Details page and create a new Book - CREATE /////////////////////////////////
 router.post('/add', (req, res, next) => 
 {
   let newBook = book 
@@ -74,7 +81,7 @@ router.post('/add', (req, res, next) =>
 });
 
 
-// GET the Book Details page in order to edit an existing Book
+// GET the Book Details page in order to edit an existing Book ///////////////////////////////////
 router.get('/:id', (req, res, next) => 
 {
   let id = req.params.id;
@@ -110,6 +117,8 @@ router.post('/:id', (req, res, next) =>
     "Author": req.body.author,
     "Genre": req.body.genre
   });
+
+  //updates book to mongo atlas bd 
   book.updateOne({_id: id}, updatedBook, (err) => 
   {
     if(err)
